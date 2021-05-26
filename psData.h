@@ -24,7 +24,10 @@ class psData : public regionData, public std::enable_shared_from_this<psData> {
     string getName() const { return name; }
     int getAge() const { return age; }
     char getGender() const { return gender; }
-    char getRace() const { return race; }
+    string getRace() const { 
+      string stringRace; 
+      stringRace[0] = race;
+      return stringRace; }
     bool getSignsMIll() const { return signs_of_mental_illness; }
     string getFlee() const { return flee; }
 
