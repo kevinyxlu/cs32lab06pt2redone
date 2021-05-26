@@ -31,6 +31,10 @@ class demogData : public regionData, public std::enable_shared_from_this<demogDa
     double getpopUnder5() const { return popUnder5; }
     double getBAup() const { return popBachelorEduPlus; }
     double getBelowPoverty() const { return popInPoverty; }
+    double getpopUnder18() const { return popUnder18; }
+    double getHSup() const { return popHighSchoolEduPlus; }
+    int getHSupCount() const { return round(popHighSchoolEduPlus / 100 * population); }
+    int getpopUnder18Count() const { return round(popUnder18 / 100 * population); }
     int getpopUnder5Count() const { return round(popUnder5 / 100 * population); }
     int getBAupCount() const { return round(popBachelorEduPlus / 100 * population); }
     int getBelowPovertyCount() const { return round(popInPoverty / 100 * population); }

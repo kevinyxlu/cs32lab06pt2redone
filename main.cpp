@@ -7,80 +7,41 @@
 #include "psData.h"
 #include "parse.h"
 #include "dataAQ.h"
+#include "raceDemogData.h"
+#include "stats.h"
+#include "visitorCombineCounty.h"
+#include "visitorCombineState.h"
+#include "statTool.h"
+
 
 using namespace std;
 
 int main() {
-    /*//Deboog output
-    ofstream myfile;
-    myfile.open("output.txt");*/
-    //dataAQ theAnswers;
+ std::vector<shared_ptr<regionData>> pileOfData;
 
-    // create one large shared vector of raw data
-    vector<shared_ptr<regionData>> pileOfData;
+  //read police shooting data
+  read_csv(pileOfData, "police_shootings_cleaned.csv", POLICE);
+   
+  //read in the demographic data
+  read_csv(pileOfData, "county_demographics.csv", DEMOG); 
 
-    // read in the police data
-    read_csv(pileOfData, "police_shootings_cleaned.csv", POLICE);
+ //create a visitor to combine the state data
+    visitorCombineState theStates;
+    statTool::createStateData(pileOfData, theStates);
+    theStates.printAllCombo(&demogData::getBelowPovertyCount, &psCombo::getNumberOfCases);
 
-    // read in the demographic data
-    read_csv(pileOfData, "county_demographics.csv", DEMOG);
-    
-    /*//Deboog print 
-    for (auto obj : theDemogData) {
-        myfile << *dynamic_pointer_cast<demogData>(obj) << std::endl;
-    }
-    for (auto obj : thePoliceData) {
-        myfile << *dynamic_pointer_cast<psData>(obj) << std::endl;
-    }
-    */
+    //create a visitor to combine the county data
+    visitorCombineCounty theCounties;
+    statTool::createCountyData(pileOfData, theCounties);
+    theCounties.printAllCombo(&demogData::getBelowPovertyCount, &psCombo::getNumberOfCases);
 
+    //Do stats work here
+    cout << "State data Pop under 5 and BA up: " << endl;
+   // statTool::computeStatsDemogRegionData(&theCounties, &demogData::getBelowPoverty, &demogData::getHSup,
+  //      &demogData::getBelowPovertyCount, &demogData::getHSupCount);
 
-/*
+  //statTool::computeStatsRaceProportion(&theStates,&raceDemogData::getAsianCount,&raceDemogData::getAsianCount);
 
-
-    std::vector<shared_ptr<demogData>> castedDemogData;
-    std::vector<shared_ptr<psData>> castedPoliceData;
-    for (auto entry : theDemogData) {
-        castedDemogData.push_back(static_pointer_cast<demogData>(entry));
-    }
-    for (auto entry : thePoliceData) {
-        castedPoliceData.push_back(static_pointer_cast<psData>(entry));
-    }
-    theAnswers.createComboDemogData(castedDemogData);
-    theAnswers.createComboPoliceData(castedPoliceData);
-    //cout << theAnswers << endl;
-
-    theAnswers.comboReport(92);
-
-
-*/
-
-
-
-
-    //myfile.close();
-    /*
-    cout << "*** the state that needs the most pre-schools**" << endl;
-    string needPK = theAnswers.youngestPop();
-    cout << *(theAnswers.getStateData(needPK)) << endl;
-    cout << "*** the state that needs the most high schools**" << endl;
-    string needHS = theAnswers.teenPop();
-    cout << *(theAnswers.getStateData(needHS)) << endl;
-    cout << "*** the state that needs the most vaccines**" << endl;
-    string needV = theAnswers.wisePop();
-    cout << *(theAnswers.getStateData(needV)) << endl;
-
-    cout << "*** the state that needs the most help with education**" << endl;
-    string noHS = theAnswers.underServeHS();
-    cout << *(theAnswers.getStateData(noHS)) << endl;
-    cout << "*** the state with most college grads**" << endl;
-    string grads = theAnswers.collegeGrads();
-    cout << *(theAnswers.getStateData(grads)) << endl;
-
-    cout << "*** the state with most population below the poverty line**" << endl;
-    string belowPov = theAnswers.belowPoverty();
-    cout << *(theAnswers.getStateData(belowPov)) << endl;
-    */
     return 0;
 }
 
