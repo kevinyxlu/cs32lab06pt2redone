@@ -55,6 +55,7 @@ psCombo::psCombo(string inS, shared_ptr<psData> inPSData) : regionData(inS, inS)
                 numCases++;
             }
         }
+    numCases = numCases + 1;
 }
 
 // function add data to psCombo

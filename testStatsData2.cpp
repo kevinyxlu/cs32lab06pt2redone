@@ -38,7 +38,13 @@ int main() {
   vector<double> dataY;
 
   statTool::gatherCountStats(&theCounties, dataX, dataY, &demogData::getCountPoverty, &psCombo::getNumberOfCases);
-
+/* for debugging
+cout << dataY.size() << endl;
+for(int i = 0; i < dataY.size(); i++)
+{
+  cout << dataY[i] << endl;
+}
+*/
   double mX = stats::computeMean(dataX); 
   double mY = stats::computeMean(dataY);  
   double cc = stats::computeCorCoeffSample(dataX, dataY);
