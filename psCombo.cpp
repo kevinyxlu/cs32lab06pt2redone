@@ -12,17 +12,17 @@ psCombo::psCombo(string inS, vector<shared_ptr<psData>> inPSData) : regionData(i
             if (entry->getGender() == 'M') numMales++;
             else if (entry->getGender() == 'F') numFemales++;
             
-            if(entry->getRace() != '\0' && entry->getRace() != ')')
+            if(entry->getRace() != "" && entry->getRace() != ")")
             {
-                if (entry->getRace() == 'W') { 
+                if (entry->getRace() == "W") { 
                     racialData.addWhiteCount(1);
                     racialData.addWhiteNHCount(1);
                     whiteCount = whiteCount + 1;
                 }
-                else if (entry->getRace() == 'A') racialData.addAsianCount(1);
-                else if (entry->getRace() == 'B') racialData.addBlackCount(1);
-                else if (entry->getRace() == 'H') racialData.addLatinxCount(1);
-                else if (entry->getRace() == 'N') racialData.addFirstNationCount(1);
+                else if (entry->getRace() == "A") racialData.addAsianCount(1);
+                else if (entry->getRace() == "B") racialData.addBlackCount(1);
+                else if (entry->getRace() == "H") racialData.addLatinxCount(1);
+                else if (entry->getRace() == "N") racialData.addFirstNationCount(1);
                 else racialData.addOtherCount(1);
                 numCases++;
             }
@@ -41,16 +41,16 @@ psCombo::psCombo(string inS, shared_ptr<psData> inPSData) : regionData(inS, inS)
             if (inPSData->getGender() == 'M') numMales++;
             else if (inPSData->getGender() == 'F') numFemales++;
             
-            if(inPSData->getRace() != '\0' && inPSData->getRace() != ')')
+            if(inPSData->getRace() != "" && inPSData->getRace() != ")")
             {
-                if (inPSData->getRace() == 'W') { 
+                if (inPSData->getRace() == "W") { 
                     racialData.addWhiteCount(1);
                     racialData.addWhiteNHCount(1);
                 }
-                else if (inPSData->getRace() == 'A') racialData.addAsianCount(1);
-                else if (inPSData->getRace() == 'B') racialData.addBlackCount(1);
-                else if (inPSData->getRace() == 'H') racialData.addLatinxCount(1);
-                else if (inPSData->getRace() == 'N') racialData.addFirstNationCount(1);
+                else if (inPSData->getRace() == "A") racialData.addAsianCount(1);
+                else if (inPSData->getRace() == "B") racialData.addBlackCount(1);
+                else if (inPSData->getRace() == "H") racialData.addLatinxCount(1);
+                else if (inPSData->getRace() == "N") racialData.addFirstNationCount(1);
                 else racialData.addOtherCount(1);
                 numCases++;
             }

@@ -14,6 +14,7 @@ public:
   visitorCreateKey(string (*df)(shared_ptr<demogData>), string (*psf)(shared_ptr<psData>)) {
       demogFunc = df;
       psFunc =psf; 
+      
    }
 
 	void visit(shared_ptr<demogData> obj) {

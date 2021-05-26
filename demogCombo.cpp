@@ -59,6 +59,13 @@ void demogCombo::addDemogData(shared_ptr<demogData> obj)
     countHSPlus = countHSPlus + obj->getCountHSPlus();
     countPoverty = countPoverty + obj->getCountPoverty();
     population = population + obj->getPop();
+    
+    popOver65 = (countOver65 / double(population)) * 100; 
+    popUnder18 = (countUnder18 / double(population)) * 100; 
+    popUnder5 = (countUnder5 / double(population)) * 100; 
+    popBachelorEduPlus = (countBAPlus / double(population)) * 100; 
+    popHighSchoolEduPlus = (countHSPlus / double(population)) * 100; 
+    popInPoverty = (countPoverty / double(population)) * 100; 
 }
 
 
