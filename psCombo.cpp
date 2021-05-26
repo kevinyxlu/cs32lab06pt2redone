@@ -65,8 +65,8 @@ void psCombo::addPSData(shared_ptr<psData> obj)
     if(obj->getFlee() != "Not fleeing" && obj->getFlee().length()) { fleeingCount = fleeingCount + 1; }
     if(obj->getAge() >= 65) {casesOver65 = casesOver65 + 1;}
     if(obj->getAge() <= 18) {casesUnder18 = casesUnder18 + 1;}
-    if (obj->getGender() == 'M') {numMales = numMales + 1;}
-    if (obj->getGender() == 'F') {numFemales = numFemales + 1;}
+    if(obj->getGender() == 'M') {numMales = numMales + 1;}
+    else if(obj->getGender() == 'F') {numFemales = numFemales + 1;}
     numCases = numCases + 1;
 }
 
