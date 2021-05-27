@@ -17,17 +17,16 @@ using namespace std;
 class psData : public regionData, public std::enable_shared_from_this<psData> {
   public:
     //add appropriate function paramaters to constructor once you add data
-    psData(string inName, int inAge, char inGender, char inRace, string inCounty, string inState, bool inMIllness, string inFlee) : 
-    regionData(inCounty, inState), name(inName), age(inAge), gender(inGender), race(inRace), signs_of_mental_illness(inMIllness), flee(inFlee) {}
+    psData(string inName, int inAge, char inGender, string inRace, string inCounty, string inState, bool inMIllness, string inFlee) : 
+    regionData(inCounty, inState), name(inName), age(inAge), gender(inGender), race(inRace), signs_of_mental_illness(inMIllness), flee(inFlee) {
+      //cout << inRace << endl;
+    }
 
     //add getters
     string getName() const { return name; }
     int getAge() const { return age; }
     char getGender() const { return gender; }
-    string getRace() const { 
-      string stringRace; 
-      stringRace[0] = race;
-      return stringRace; }
+    string getRace() const { return race; }
     bool getSignsMIll() const { return signs_of_mental_illness; }
     string getFlee() const { return flee; }
 
@@ -42,7 +41,7 @@ private:
     const string name;
     const int age;
     const char gender;
-    const char race;
+    const string race;
     const bool signs_of_mental_illness;
     const string flee;
 };

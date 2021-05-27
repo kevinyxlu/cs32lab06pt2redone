@@ -41,7 +41,7 @@ int main() {
   //      &demogData::getBelowPovertyCount, &demogData::getHSupCount);
 
   //statTool::computeStatsRaceProportion(&theStates,&raceDemogData::getAsianCount,&raceDemogData::getAsianCount);
-
+    statTool::computeStatsRaceProportion(&theCounties, &raceDemogData::getWhiteNHCount, &raceDemogData::getWhiteNHCount); //5.1
     return 0;
 }
 

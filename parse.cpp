@@ -117,7 +117,7 @@ shared_ptr<psData> readCSVLinePolice(std::string theLine) {
     }
     string gender = getFieldNQ(ss);
     string race = getFieldNQ(ss);
-    if (!race.length()) race = "O";
+    //if (!race.length()) race = "O";
     string city = getFieldNQ(ss);
     string state = getFieldNQ(ss);
     bool signs_of_mental_illness = (getFieldNQ(ss) == "True");
@@ -125,7 +125,7 @@ shared_ptr<psData> readCSVLinePolice(std::string theLine) {
     string flee = getFieldNQ(ss);
 
     //string inName, int inAge, char inGender, char inRace, string inCounty, string inState, bool inMIllness, string inFlee
-    return make_shared<psData>(name, age, gender[0], race[0], city, state, signs_of_mental_illness, flee);
+    return make_shared<psData>(name, age, gender[0], race, city, state, signs_of_mental_illness, flee);
 }
 
 

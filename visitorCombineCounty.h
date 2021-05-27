@@ -32,7 +32,7 @@ public:
     //store demographic data by county name
 	void visit(shared_ptr<demogData> obj) {
         //fill in
-        string county = cleanCountyName(obj->getRegionName()) + obj->getState();
+        string county = cleanCountyName(obj->getRegionName()) + obj->getState();  
         if(allComboDemogData.count(county)) // if the state exists in the map already, then aggregate
         {
             allComboDemogData[county]->addDemogData(obj);

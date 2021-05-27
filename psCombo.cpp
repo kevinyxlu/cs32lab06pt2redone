@@ -33,6 +33,7 @@ psCombo::psCombo(string inS, vector<shared_ptr<psData>> inPSData) : regionData(i
 
 psCombo::psCombo(string inS, shared_ptr<psData> inPSData) : regionData(inS, inS)
 {
+    /*
         if (inPSData->getState() == inS) {
             if (inPSData->getSignsMIll()) numMentalIllness++;
             if (inPSData->getFlee() != "Not fleeing" && inPSData->getFlee().length()) fleeingCount++;
@@ -56,6 +57,9 @@ psCombo::psCombo(string inS, shared_ptr<psData> inPSData) : regionData(inS, inS)
             }
         }
     numCases = numCases + 1;
+    */
+    addPSData(inPSData);
+    
 }
 
 // function add data to psCombo
@@ -67,6 +71,20 @@ void psCombo::addPSData(shared_ptr<psData> obj)
     if(obj->getAge() <= 18) {casesUnder18 = casesUnder18 + 1;}
     if(obj->getGender() == 'M') {numMales = numMales + 1;}
     else if(obj->getGender() == 'F') {numFemales = numFemales + 1;}
+
+    if(obj->getRace() != "" && obj->getRace() != ")")
+    {
+        if (obj->getRace() == "W") { 
+            racialData.addWhiteCount(1);
+            racialData.addWhiteNHCount(1);
+        }
+        else if (obj->getRace() == "A") racialData.addAsianCount(1);
+        else if (obj->getRace() == "B") racialData.addBlackCount(1);
+        else if (obj->getRace() == "H") racialData.addLatinxCount(1);
+        else if (obj->getRace() == "N") racialData.addFirstNationCount(1);
+        else racialData.addOtherCount(1);
+    }
+
     numCases = numCases + 1;
 }
 
